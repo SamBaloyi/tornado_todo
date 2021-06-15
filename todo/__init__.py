@@ -13,12 +13,12 @@ from .views import (
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
 from tornado.options import options, define
-from tornado_sqlalchemy import make_session_factory
+from tornado_sqlalchemy import sessionmaker
 from tornado.web import Application
 
 
 define('port', default=8888, help='port to listen on')
-factory = make_session_factory(os.environ.get(
+factory = sessionmaker(os.environ.get(
     'DATABASE_URL',
     'postgres://localhost:5432/todo'
 ))
